@@ -24,9 +24,7 @@ afterAll(() => {
 
 
 test("Health check widget sees the API health route", async () => {
-	let renderResult = render(<ApiHealthWidget />);
-
-	
+	render(<ApiHealthWidget />);
 
 	vi.waitFor(() => {
 		let healthCheckTextElement = screen.getByText("OK");

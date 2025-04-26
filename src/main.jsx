@@ -8,6 +8,7 @@ async function enableMocking(){
   if (import.meta.env.MODE !== "development") {
     return;
   }
+  // return;
 
   const {worker} = await import("../mocks/browser.js");
 
