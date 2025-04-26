@@ -1,5 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { test, expect, vi, beforeAll, afterEach, afterAll } from "vitest";
+import ItemList from "../src/components/ItemList.jsx";
+
+
 
 // MSW interceptor server!
 import { server } from "../mocks/node.js";
@@ -24,9 +27,11 @@ afterAll(() => {
 test("ItemList retrieves a list of item objects from the API", async () => {
 	render(<ItemList />);
 
-	let testMonitorTextElement = screen.getByText("Test Monitor");
-	expect(testMonitorTextElement).toBeInTheDocument();
+	vi.waitFor(() => {
+		let testMonitorTextElement = screen.getByText("Test Monitor");
+		expect(testMonitorTextElement).toBeInTheDocument();
 
-	let testKeyboardTextElement = screen.getByText("Test Keyboard");
-	expect(testKeyboardTextElement).toBeInTheDocument();
+		let testKeyboardTextElement = screen.getByText("Test Keyboard");
+		expect(testKeyboardTextElement).toBeInTheDocument();
+	})
 });
